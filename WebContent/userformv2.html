@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script>
+function deleteu() {
+	let uform = document.getElementById("uform");
+	
+	console.log("deleteu");
+	
+	var myHeaders = new Headers();
+
+	var myInit = { method: 'DELETE',
+	               mode: 'cors',
+	               cache: 'default' };
+
+	fetch('/FTT-WEB003/WebApi', myInit)
+	.then(function(response) {
+	  return response.text();
+	})
+	.then(function(txt) {
+	  document.getElementById('uinfo').innerHTML=txt;
+	});
+}
+</script>
+</head>
+<body>
+<!--   <form method="get" action="/FTT-WEB003/WebApi"> -->
+<form id="uform">
+
+<p><label>ID: </label><input type="number" name="uid"></p>
+<p><label>User: </label><input type="text" name="uname"></p>
+<button type="button" onclick="deleteu();">Delete</button>
+</form>
+<pre id="uinfo"></pre>
+</body>
+</html>

@@ -31,7 +31,7 @@ public class WebApi extends HttpServlet {
 	public void init(ServletConfig config) throws ServletException {
 		// TODO Auto-generated method stub
 	}
-
+ 
 	/**
 	 * @see Servlet#destroy()
 	 */
@@ -50,11 +50,15 @@ public class WebApi extends HttpServlet {
 		String uname = request.getParameter("uname");
 		String uid = request.getParameter("uid");
 		
-		response.setContentType("text/csv");
+		response.setContentType("text/plain");
+		//response.setContentType("text/csv");
+		
+		System.out.println("Passei no GET!");
+
 		// TODO Auto-generated method stub
 		
-		response.getWriter().append("#;Val;Type\\n1;34.5;A\\n2;23.4C;\\n5;43.4;B");
-		/*
+		//response.getWriter().append("#;Val;Type\\n1;34.5;A\\n2;23.4C;\\n5;43.4;B");
+		
 		response.getWriter().append("Served at FTT: ")
 		                    .append(request.getContextPath())
 		                    .append(" - ")
@@ -63,7 +67,7 @@ public class WebApi extends HttpServlet {
 				            .append(uname)
 				            .append(" id: ")
 				            .append(uid);
-				            */
+				            
 	}
 
 	/**
@@ -72,6 +76,7 @@ public class WebApi extends HttpServlet {
 	protected void doPost(HttpServletRequest request, 
 			              HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		System.out.println("Passei no POST!");
 		this.doGet(request, response);
 	}
 
@@ -89,6 +94,10 @@ public class WebApi extends HttpServlet {
 	protected void doDelete(HttpServletRequest request, 
 			                HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		response.setContentType("application/JSON");
+
+		response.getWriter().append("{\"status\":\"deleted\",\"timestamp\":\"" + new java.util.Date() +"\"}");
+		System.out.println("Passei no DELETE!!");
 	}
 
 } //Servlet
